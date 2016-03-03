@@ -1,0 +1,52 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-base             # Packages every Meteor app needs to have
+mobile-experience       # Packages for a great mobile UX
+mongo                   # The database Meteor supports right now
+blaze-html-templates    # Compile .html files into Meteor Blaze views
+session                 # Client-side reactive dictionary for your app
+jquery                  # Helpful client-side library
+tracker                 # Meteor's client-side reactive programming library
+
+standard-minifiers      # JS/CSS minifiers run for production mode
+es5-shim                # ECMAScript 5 compatibility for older browsers.
+ecmascript              # Enable ECMAScript2015+ syntax in app code
+
+twbs:bootstrap
+aldeed:tabular
+themeteorchef:bert
+kadira:flow-router
+kadira:blaze-layout
+arillo:flow-router-helpers
+matdutour:popup-confirm
+mizzao:bootboxjs
+aldeed:collection2
+aldeed:simple-schema
+aldeed:autoform
+zimme:select2-bootstrap3-css
+aldeed:autoform-select2
+natestrauser:select2
+accounts-password
+ian:accounts-ui-bootstrap-3
+255kb:meteor-status
+momentjs:moment
+lbee:moment-helpers
+aldeed:autoform-bs-datetimepicker
+tsega:bootstrap3-datetimepicker@=3.1.3_3
+
+theara:flow-router-breadcrumb
+ovcharik:alertifyjs
+theara:id-generator
+theara:autoform-inputmask
+theara:numeral-helpers
+numeral:numeral
+theara:inputmask
+sacha:spin
+ongoworks:security
+alanning:roles
+ecwyne:mathjs
+dburles:collection-helpers

@@ -1,0 +1,59 @@
+<!--student-->
+<template name="subject">
+    <a class="btn btn-primary" href="{{pathFor 'subjectInsert'}}">Add New</a><br><br>
+    {{> tabular table=TabularTables.Subject class="table table-striped table-bordered table-condensed"}}
+    <hr>
+
+</template>
+<!--studentInsert-->
+<template name="subjectInsert">
+
+    {{#autoForm collection="Collection.Subject" id="subjectInsert" type="insert"}}
+        <fieldset>
+            <legend>Add Subject</legend>
+            {{> afQuickField name='subjectName' class='jsSubjectName'}}
+            {{> afQuickField name='price' class='jsPrice'}}
+            {{> afQuickField name='duration' class='duration'}}
+            {{> afQuickField name='describe' class='describe'}}
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Insert</button>
+    {{/autoForm}}
+    <br><br>
+
+</template>
+
+<!--update-->
+<template name="subjectUpdate">
+    {{#if Template.subscriptionsReady}}
+        {{#autoForm collection="Collection.Subject" doc=subjectDoc id="subjectUpdate" type="update"}}
+            <fieldset>
+                <legend>Update Subject</legend>
+                {{> afQuickField name='subjectName'}}
+                {{> afQuickField name='price'}}
+                {{> afQuickField name='duration'}}
+                {{> afQuickField name='describe'}}
+            </fieldset>
+            <button type="submit" class="btn btn-primary jsSave">Update</button>
+        {{/autoForm}}
+    {{else}}
+        {{> spinner}}
+    {{/if}}
+
+</template>
+
+<template name="subjectAction">
+    <div class="dropdown text-center">
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-align-justify"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="jsUpdate action"><span class="glyphicon glyphicon-pencil"></span> Edit</a></li>
+            <li><a class="jsRemove action"><span class="glyphicon glyphicon-trash"></span> Remove</a></li>
+        </ul>
+    </div>
+    <!--<button class="btn btn-primary jsUpdate"><span class="glyphicon glyphicon-pencil"></span></button>-->
+    <!--<button class="btn btn-danger jsRemove"><span class="glyphicon glyphicon-trash"></span></button>-->
+
+</template>
+
+

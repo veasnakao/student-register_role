@@ -1,0 +1,69 @@
+<!--register report-->
+<template name="registerRpt">
+    {{#autoForm schema="Schema.RegisterRpt" id="registerRpt"}}
+        <fieldset>
+            <legend>Register Report</legend>
+            <div class="row">
+                <div class="col-md-6">
+                    {{> afQuickField name='fromDate'}}
+                </div>
+                <div class="col-md-6">
+                    {{> afQuickField name='toDate'}}
+                </div>
+            </div>
+        </fieldset>
+        <button type="submit" class="btn btn-primary">View Report</button>
+    {{/autoForm}}
+</template>
+
+
+<!--register report generator-->
+<template name="registerRptGen">
+    <div class="rpt-header">
+            <img src="logo.png" class="img img-responsive">
+            <h2>Rabbit IT Solution</h2><br>
+            <h3>Register Report</h3>
+    </div>
+
+
+    Date: {{data.header.date}}
+    <table class="table table-bordered" style="margin-top: 10px;">
+        <thead>
+        <tr>
+            <th>Nº</th>
+            <th>Register ID</th>
+            <th>Register Date</th>
+            <th>Student Name</th>
+            <th>Subject Name</th>
+            <th>Price</th>
+            <th>Discount</th>
+            <th>Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each data.content}}
+            <tr>
+                <td>{{no @index}}</td>
+                <td>{{_id}}</td>
+                <td>{{moFormat registerDate "DD/MM/YYYY"}}</td>
+                <td>{{_student.studentName}}</td>
+                <td>{{_subject.subjectName}}</td>
+                <td class="text-right">{{numFormat price "$ 0,0.00"}}</td>
+                <td class="text-right">{{numFormat discount "$ 0,0.00"}}</td>
+                <td class="text-right text-primary">{{numFormat amount "$ 0,0.00"}}</td>
+            </tr>
+        {{/each}}
+        <tr>
+            <td colspan="5" class="text-center">Total</td>
+            <td class="text-right text-primary">{{numFormat data.price "$ 0,0.00"}}</td>
+            <td class="text-right text-primary">{{numFormat data.discount "$ 0,0.00"}}</td>
+            <td class="text-right text-primary">{{numFormat data.total "$ 0,0.00"}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <div style="float: right; margin-right: 30px; margin-top: 20px;">
+        <h5>Date : ...... / ...... / ...............</h5><br><br>
+        Prepare by : Rabbit TC
+    </div>
+
+</template>

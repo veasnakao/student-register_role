@@ -1,0 +1,104 @@
+<head>
+    <link rel="icon" href="/favicon.ico">
+    <title>Student Register</title>
+</head>
+
+<template name="mainLayout">
+    <body style="margin-top: 60px">
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="logo-new.png" class="img-responsive"
+                     style="width: 200px; height:40px; margin-top: 3px; margin-right: 10px;">
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+
+                <ul class="nav navbar-nav">
+                    <li class="{{isActiveRoute name='home'}}"><a href="{{pathFor 'home'}}">Home</a></li>
+
+                    <!--{{#if isInRole 'Data'}}-->
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true"
+                               aria-expanded="false">Data <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li class="{{isActiveRoute name='student'}}"><a href="{{pathFor 'student'}}">Student</a>
+                                </li>
+                                <li class="{{isActiveRoute name='register'}}"><a
+                                        href="{{pathFor 'register'}}">Register</a></li>
+                                <li class="{{isActiveRoute name='payment'}}"><a
+                                        href="{{pathFor 'payment'}}">Payment</a></li>
+                                <li class="{{isActiveRoute name=" userToRole"}}">
+                                    <a href="{{pathFor 'userToRole'}}">User To Role</a>
+                                </li>
+                            </ul>
+                        </li>
+                    <!--{{/if}}-->
+
+                    <!--{{#if isInRole 'Setting'}}-->
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true"
+                               aria-expanded="false">Setting <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li class="{{isActiveRoute name='subject'}}"><a href="{{pathFor 'subject'}}">Subject</a>
+                                </li>
+                                <li class="{{isActiveRoute name='teacher'}}"><a href="{{pathFor 'teacher'}}">Teacher</a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                    <!--{{/if}}-->
+
+                    <!--{{#if isInRole 'Report'}}-->
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true"
+                               aria-expanded="false">Report <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li class="{{isActiveRoute name='registerRpt'}}">
+                                    <a href="{{pathFor 'registerRpt'}}">Register</a>
+                                </li>
+                                <li class="{{isActiveRoute name='paymentRpt'}}">
+                                    <a href="{{pathFor 'paymentRpt'}}">Payment</a>
+                                </li>
+                                <li class="{{isActiveRoute name='osAmountRpt'}}">
+                                    <a href="{{pathFor 'osAmountRpt'}}">Out Standing</a>
+                                </li>
+                            </ul>
+                        </li>
+                    <!--{{/if}}-->
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a>{{> loginButtons}}</a>
+                    </li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+    <br>
+
+    <div class="container">
+        {{> breadcrumb}}
+        {{> Template.dynamic template=content}}
+        {{> meteorStatus}}
+    </div><!-- /.container -->
+
+    </body>
+</template>

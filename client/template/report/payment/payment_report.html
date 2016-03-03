@@ -1,0 +1,71 @@
+<!--register report-->
+<template name="paymentRpt">
+    {{#autoForm schema="Schema.PaymentRpt" id="paymentRpt"}}
+        <fieldset>
+            <legend>Register Report</legend>
+            <div class="row">
+                <div class="col-md-6">
+                    {{> afQuickField name='fromDate'}}
+                </div>
+                <div class="col-md-6">
+                    {{> afQuickField name='toDate'}}
+                </div>
+            </div>
+        </fieldset>
+        <button type="submit" class="btn btn-primary">View Report</button>
+    {{/autoForm}}
+</template>
+
+
+<!--register report generator-->
+<template name="paymentRptGen">
+    <div class="rpt-header">
+        <img src="logo.png" class="img img-responsive">
+        <h2>Rabbit IT Solution</h2>
+        <h3>Payment Report</h3>
+    </div>
+
+
+    Date: {{data.header.date}}
+    <table class="table table-bordered" style="margin-top: 10px;">
+        <thead>
+        <tr>
+            <th>Nº</th>
+            <th>Payment ID</th>
+            <th>Payment Date</th>
+            <th>Student Name</th>
+            <th>Subject Name</th>
+            <th>Due Amount</th>
+            <th>Paid Amount</th>
+            <th>OS Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each data.content}}
+            <tr>
+                <td>{{no @index}}</td>
+                <td>{{_id}}</td>
+                <td>{{moFormat paymentDate "DD/MM/YYYY"}}</td>
+                <td>{{_student.studentName}}</td>
+                <td>{{_subject.subjectName}}</td>
+                <!--<td>{{getRegisterId registerId}}</td>-->
+                <td class="text-right">{{numFormat dueAmount "$ 0,0.00"}}</td>
+                <td class="text-right">{{numFormat paidAmount "$ 0,0.00"}}</td>
+                <td class="text-right">{{numFormat osAmount "$ 0,0.00"}}</td>
+            </tr>
+        {{/each}}
+        <tr>
+            <td colspan="5" class="text-center">Grand Total</td>
+            <td class="text-right text-primary">{{numFormat data.totalDueAmount "$ 0,0.00"}}</td>
+            <td class="text-right text-primary">{{numFormat data.totalPaidAmount "$ 0,0.00"}}</td>
+            <td class="text-right text-primary">{{numFormat data.totalOsAmount "$ 0,0.00"}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <div style="float: right; margin-right: 30px; margin-top: 20px;">
+        <h4>Date : .... / .... / ....</h4>
+        <br>
+        Prepare by : Rabbit TC
+    </div>
+
+</template>

@@ -1,0 +1,54 @@
+<!--student-->
+<template name="teacher">
+    {{#if currentUser}}
+
+        <a class="btn btn-primary" href="{{pathFor 'teacherInsert'}}">Add New</a><br><br>
+        {{> tabular table=TabularTables.Teacher class="table table-striped table-bordered table-condensed"}}
+        <hr>
+    {{/if}}
+</template>
+<!--studentInsert-->
+<template name="teacherInsert">
+
+
+    {{#autoForm collection="Collection.Teacher" id="teacherInsert" type="insert"}}
+        <fieldset>
+            <legend>Add Teacher</legend>
+            {{> afQuickField name='teacherName'}}
+            {{> afQuickField name='gender'}}
+            {{> afQuickField name='telephone'}}
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Add New Teacher</button>
+    {{/autoForm}}
+    <br><br>
+
+</template>
+
+<!--update-->
+<template name="teacherUpdate">
+    {{#if Template.subscriptionsReady}}
+        {{#autoForm collection="Collection.Teacher" doc=teacherDoc id="teacherUpdate" type="update"}}
+            <fieldset>
+                <legend>Update Teacher Info</legend>
+                {{> afQuickField name='teacherName'}}
+                {{> afQuickField name='gender'}}
+                {{> afQuickField name='telephone'}}
+            </fieldset>
+            <button type="submit" class="btn btn-primary jsSave">Update Teacher Info</button>
+        {{/autoForm}}
+    {{else}}
+        {{> spinner}}
+    {{/if}}
+</template>
+
+<template name="teacherAction">
+    <div class="dropdown text-center">
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-align-justify"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="jsUpdate action"><span class="glyphicon glyphicon-pencil"></span> Edit</a></li>
+            <li><a class="jsRemove action"><span class="glyphicon glyphicon-trash"></span> Remove</a></li>
+        </ul>
+    </div>
+</template>
